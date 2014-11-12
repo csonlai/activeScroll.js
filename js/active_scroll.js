@@ -246,24 +246,10 @@
 				}
 				//保存上一次滚动值
 				lastScrollY = scrollElement.scrollTop();
-
-				//if(window.scrollY + window.innerHeight >= document.body.clientHeight && !isLoading){
-					// isLoading = true;
-					// setTimeout(function(){
-
-					// 	//_this.addItems(createString());
-					// 	isLoading = false;
-
-					// },200);
-				//}
+				
 
 			});
 		};
-
-		//设置loading状态
-		// ActiveScroll.prototype.setLoding = function(flag){
-		// 	isLoading = flag;
-		// };
 
 		return new ActiveScroll();
 	};
