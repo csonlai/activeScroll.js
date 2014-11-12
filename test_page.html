@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<title>Active Scroll</title>
+	<style type="text/css">
+	*{
+		margin:0;
+		padding:0;
+	}
+	#start,#mid,#end{
+		position: fixed;
+		right: 0;
+
+	}
+	#start{
+		top: 0;
+	}
+	#mid {
+		top: 15px;
+	}
+	#end{
+		top: 30px;
+	}
+	</style>
+</head>
+<body>
+	<div>test page</div>
+	<ul class="list">
+	</ul>
+
+
+	<script type="text/javascript" src="./js/zepto.js"></script>
+	<script type="text/javascript" src="./js/active_scroll.js"></script>
+	<script type="text/javascript">
+		var isLoading = false;
+		var m = 0;
+		function createString(){
+
+			var str = '';
+			for(var n = 0; n < 80; n++){
+				str += '<li>list' + (m++) + '</li>';
+			}
+			return str;
+		};
+
+		var as = $('.list').activeScroll();
+
+		as.addItems(createString());
+		
+
+		$(window).on('scroll',function(){
+			
+
+			if(window.scrollY + window.innerHeight >= document.body.clientHeight && !isLoading){
+
+				isLoading = true;
+
+				setTimeout(function(){
+					as.addItems(createString());
+					isLoading = false;
+				},500);
+
+			}
+		});
+
+	</script>
+</body>
+</html>
