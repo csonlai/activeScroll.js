@@ -1,7 +1,7 @@
 ActiveScroll.js
 ===============
 
-activeScroll.js is a zepto plugin to deal with the long data list.
+ActiveScroll.js is a zepto plugin to deal with the long data list.
 It will remove dom out of the view when scroll out and resume them when scroll back into the view.
 
 # How it works
@@ -30,3 +30,6 @@ When we add items of page,we use addItems function instead of adding them to dom
 ``` js
     as.addItems(newItems);
 ```
+
+
+![image](http://www.alloyteam.com/wp-content/uploads/2014/11/C307E4AD-909C-43F3-9C84-24D61ADEC08C.jpg)
