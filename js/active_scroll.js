@@ -33,10 +33,12 @@
 
 		//上下占位元素
 		var topPlaceholder;
+		//下占位元素
+		var bottomPlaceHolder;
 
 
 		//上下缓冲页的个数
-		var bufferCount = 1;
+		var bufferCount = 2;
 		//是否加载中
 		var isLoading = false;
 		//滚动timeid
@@ -110,7 +112,8 @@
 
 		//监测滚动
 		function checkScroll(dir){
-			
+
+			var _leaveHeight = 0;
 			var _currentMidIndex;
 			var _currentStartIndex;
 			var _currentEndIndex;
@@ -123,9 +126,6 @@
 			_currentStartIndex = Math.max(_currentMidIndex - bufferCount , 0);
 			_currentEndIndex = Math.min(_currentMidIndex + bufferCount , pages.length - 1);
 
-			// $('#start').html(_currentStartIndex);
-			// $('#mid').html(_currentMidIndex);
-			// $('#end').html(_currentEndIndex);
 
 			//最近窗口的中间页没有变化
 			if(_currentStartIndex == startIndex && _currentEndIndex == endIndex){
@@ -148,6 +148,19 @@
 					pages[i].appendTo(_self);
 				}
 
+				for(var i = _currentEndIndex + 1 ; i < pages.length; i++){
+					_leaveHeight += Number(pages[i].data('height'));
+				}
+
+				if(!bottomPlaceHolder){
+					bottomPlaceHolder = $('<div></div>');
+				}
+
+				bottomPlaceHolder.css('height' , _leaveHeight + 'px');
+
+
+				//底部占位元素放到最后
+				bottomPlaceHolder.appendTo(_self);
 				//更新startIndex endIndex midindex
 				startIndex = _currentStartIndex;
 				endIndex = _currentEndIndex;
@@ -205,8 +218,8 @@
 			//记录新增页的top值
 			newPage.data('top' ,_currentHeight);
 
-			//test
-			newPage.attr('data-top',_currentHeight);
+			//记录每页高度
+			newPage.data('height',newPage.height());
 
 			//记录页索引值
 			newPage.data('index',pages.length - 1);
@@ -246,13 +259,16 @@
 				}
 				//保存上一次滚动值
 				lastScrollY = scrollElement.scrollTop();
-				
+
+
 
 			});
 		};
+
 
 		return new ActiveScroll();
 	};
 
 }(window ,$);
+
 
