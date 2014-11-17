@@ -31,4 +31,4 @@ When we add items of page,we use addItems function instead of adding them to dom
     as.addItems(newItems);
 ```
 
-<img src="http://www.alloyteam.com/wp-content/uploads/2014/11/C307E4AD-909C-43F3-9C84-24D61ADEC08C.jpg" alt="Drawing" width="200px" />
+<img src="http://www.alloyteam.com/wp-content/uploads/2014/11/C307E4AD-909C-43F3-9C84-24D61ADEC08C.jpg" alt="Drawing" width="450px" />
