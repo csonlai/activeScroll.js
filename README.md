@@ -1,4 +1,4 @@
-activeScroll.js
+ActiveScroll.js
 ===============
 
 activeScroll.js is a zepto plugin to deal with the long data list.
